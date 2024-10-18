@@ -8,7 +8,7 @@ const buildDb = async () => {
       console.log('Database & tables created!');
     }).catch(err => {
       console.error('Error syncing with the database:', err);
-    });;
+    });
   return buildData();
 };
 

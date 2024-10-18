@@ -9,6 +9,7 @@ import CategoryModel from './models/category.js';
 const DATABASE_URL = process.env.DATABASE_URL;
 
 export const sequelize = new Sequelize(DATABASE_URL, {
+  define: { underscored: true, timestamps: true },
   dialect: 'postgres',
   logging: false
 });

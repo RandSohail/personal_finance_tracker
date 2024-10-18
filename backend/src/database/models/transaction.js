@@ -7,17 +7,17 @@ const TransactionModel = (sequelize) => {
       autoIncrement: true,
       primaryKey: true,
     },
-    user_id: {
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    account_id: {
+    accountId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    category_id: {
+    categoryId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     amount: {
       type: DataTypes.DECIMAL,
@@ -28,13 +28,9 @@ const TransactionModel = (sequelize) => {
       values: ['income', 'expense'],
       allowNull: false,
     },
-    date: {
+    timestamp: {
       type: DataTypes.DATE,
-      allowNull: false
-    },
-    time: {
-      type: DataTypes.TIME,
-      allowNull: false
+      defaultValue: DataTypes.NOW,
     },
     description: {
       type: DataTypes.TEXT,
