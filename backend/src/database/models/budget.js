@@ -7,17 +7,17 @@ const BudgetModel = (sequelize) => {
       autoIncrement: true,
       primaryKey: true,
     },
-    user_id: {
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    category_id: {
+    categoryId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
     limit: {
       type: DataTypes.DECIMAL,
-      allowNull: false
+      defaultValue: 0.0,
     },
     current_spending: {
       type: DataTypes.DECIMAL,
