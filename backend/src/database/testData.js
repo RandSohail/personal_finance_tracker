@@ -26,8 +26,6 @@ export default async () => {
     accountId: 1,
     amount: 800,
     type: 'income',
-    date: "7/10/2024",
-    time: "14:55",
     description: "pays from friend"
   })
 
