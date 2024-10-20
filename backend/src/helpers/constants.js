@@ -13,3 +13,19 @@
 //   http: 3,
 //   debug: 4,
 // };
+
+export const httpStatus = {
+  UNAUTHORIZED: 401,
+  CREATED: 201,
+  OK: 200,
+  NOT_FOUND: 404,
+  BAD_REQUEST: 400,
+  CONFLICT: 409,
+  INTERNAL_SERVER_ERROR: 500,
+  REDIRECT: 302,
+};
+
+export const errorResponse = {
+  CLIENT: 'PAGE NOT FOUND',
+  SERVER: 'INTERNAL SERVER ERROR',
+};

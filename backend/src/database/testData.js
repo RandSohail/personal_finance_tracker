@@ -5,11 +5,11 @@ export default async () => {
     // id: 1,
     name: 'Rand Sohail',
     email: 'randsohail98@gmail.com',
-    password_hash: 'hashed_password_here'
+    password: 'hashed_password_here'
   }, {
     name: "User 2 ",
     email: "user2@gmail.com",
-    password_hash: "12345password"
+    password: "12345password"
   }]);
 
   await Accounts.create({
