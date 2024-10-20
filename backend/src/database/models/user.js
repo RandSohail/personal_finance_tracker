@@ -16,7 +16,7 @@ const UserModel = (sequelize) => {
       allowNull: false,
       unique: true,
     },
-    password_hash: {
+    password: {
       type: DataTypes.STRING,
       allowNull: false,
     },
