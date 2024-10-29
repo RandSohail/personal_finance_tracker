@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Landing from "./pages/landing.jsx";
-import { SignUp } from "./pages";
+import { SignUpPage } from "./pages";
 import "./App.css";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Landing />}></Route>
-        <Route path="/signup" element={<SignUp />}></Route>
+        <Route path="/signup" element={<SignUpPage />}></Route>
       </Routes>
     </div>
   );
