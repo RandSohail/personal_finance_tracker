@@ -1,0 +1,19 @@
+.container{
+  box-sizing: border-box;
+  padding: 50px 0px 0px 50px; 
+  width: 50%;
+  height: 100%;
+  border: 1px solid pink;
+}
+.header{
+  text-align: center;
+}
+.inputs-container{
+  width: 50%
+}
+/* .form-input{
+  margin-left: 10px;
+} */
+.form-button{
+  margin-top: 20px;
+}

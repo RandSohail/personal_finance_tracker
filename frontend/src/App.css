@@ -1,5 +1,6 @@
 .App {
-  border: 1px solid red;
-  margin: 20px;
+  /* border: 1px solid red; */
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
