@@ -17,6 +17,7 @@
 export const httpStatus = {
   UNAUTHORIZED: 401,
   CREATED: 201,
+  FORBIDDEN: 403,
   OK: 200,
   NOT_FOUND: 404,
   BAD_REQUEST: 400,
