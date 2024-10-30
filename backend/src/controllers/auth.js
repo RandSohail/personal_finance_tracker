@@ -24,15 +24,15 @@ export default class AuthController {
       const { email, password } = request.body;
 
       const data = await Users.findOne({ where: { email } });
-      if (!data) throw new Error('User not found');
+      if (!data) throw new Error('Incorrect email or password');
 
       const resultCompare = await compare(password, data.password)
-      if (!resultCompare) throw new Error('Password mismatch');
+      if (!resultCompare) throw new Error('Incorrect email or password');
 
       console.log({ email, password }, data);
       response.json({ message: "SUCCESS LOGIN" });
     } catch (error) {
-      if (error.message) response.status(httpStatus.FORBIDDEN).json({ error: error.message })
+      if (error.message) response.status(httpStatus.FORBIDDEN).json({ message: error.message })
       else next(error)
     }
   }
