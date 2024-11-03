@@ -1,6 +1,7 @@
 import { hash, compare } from "bcrypt";
 import { Users } from "../database/index.js";
 import { httpStatus } from "../helpers/constants.js";
+import { SendEmail } from "../helpers/index.js"
 export default class AuthController {
   static async signUp(request, response, next) {
     try {
@@ -37,7 +38,20 @@ export default class AuthController {
     }
   }
 
-  forgetPassword() { }
+  static async forgetPassword(request, response) {
+    try {
+      const { email } = request.body;
+      // const data = await Users.findOne({ where: { email } });
+      // if (!data) throw new Error('Incorrect email or password');
+      // const name = data.name;
+      // const test = await SendEmail();
+      console.log({ test });
+      // console.log(data.name);
+      response.send("Forget Password Controller")
+    } catch (error) {
+      console.log(error);
+    }
+  }
   resetPassword() { }
   logout() { }
 }
