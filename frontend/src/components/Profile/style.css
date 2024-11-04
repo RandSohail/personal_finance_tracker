@@ -1,0 +1,10 @@
+.profile-container{
+  width: 80%;
+  border: 1px solid red;
+  margin: 50px auto;
+}
+
+.profile-welcome{
+   text-align: center;
+   border-radius: 50px;
+}
