@@ -1,22 +1,13 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { Title, Flex } from "../AntDesign";
 import RandomAvatar from "./randomAvatar";
 
 import "./style.css";
 
-ProfileData.propTypes = {
-  data: PropTypes.object({
-    name: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    balance: PropTypes.number.isRequired,
-  }).isRequired,
-};
-
-export default function ProfileData({ data }) {
+export default function ProfileData(data) {
   // TODO: make a request to the server to get this data
-  const { name, email, balance } = data;
-  console.log(data);
+  const { name, email, balance } = data.data;
 
   return (
     <div>

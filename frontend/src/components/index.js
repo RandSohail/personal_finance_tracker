@@ -1,4 +1,2 @@
-import Profile from "./Profile";
-
 export { SignupForm, LoginForm } from "./Authentication";
-export { Profile };
+export { ProfileData, ProfileTable } from "./Profile";
