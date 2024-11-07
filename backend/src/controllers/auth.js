@@ -1,5 +1,5 @@
 import { hash, compare } from "bcrypt";
-import { Users } from "../database/index.js";
+import { Users, Accounts } from "../database/index.js";
 import { httpStatus } from "../helpers/constants.js";
 export default class AuthController {
   static async signUp(request, response, next) {
@@ -9,7 +9,8 @@ export default class AuthController {
       const hashedPassword = await hash(password, 10);
 
       // TODO: check email if its already exist and handle the error
-      await Users.create({ name, email, password: hashedPassword });
+      const userData = await Users.create({ name, email, password: hashedPassword });
+      await Accounts.create({ userId: userData.dataValues.id })
       response.send({ message: "SUCCESS SIGNUP" });
     } catch (error) {
       console.log({ test: error.errors[0].message });
@@ -29,7 +30,7 @@ export default class AuthController {
       const resultCompare = await compare(password, data.password)
       if (!resultCompare) throw new Error('Incorrect email or password');
 
-      console.log({ email, password }, data);
+      response.cookie('userId', data.dataValues.id, { httpOnly: true, secure: true });
       response.json({ message: "SUCCESS LOGIN" });
     } catch (error) {
       if (error.message) response.status(httpStatus.FORBIDDEN).json({ message: error.message })
