@@ -4,7 +4,7 @@ import { validator, signupSchema, loginSchema } from '../helpers/index.js';
 
 const router = express.Router();
 
-router.post('/auth/signup', validator.body(signupSchema), AuthController.signUp);
-router.post('/auth/login', validator.body(loginSchema), AuthController.login);
+router.post('/signup', validator.body(signupSchema), AuthController.signUp);
+router.post('/login', validator.body(loginSchema), AuthController.login);
 
 export default router;

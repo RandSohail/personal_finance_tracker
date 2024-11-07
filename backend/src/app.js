@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import "dotenv/config";
 import morgan from "morgan";
+import cookieParser from 'cookie-parser';
 import routes from './routes/index.js'
 import { notFound, serverError } from './middleware/index.js'
 const app = express();
@@ -10,6 +11,7 @@ app.use(cors({
   origin: 'http://localhost:3000',
   credentials: true,
 }))
+app.use(cookieParser());
 app.use(morgan("dev"))
 app.use(express.json());
 
