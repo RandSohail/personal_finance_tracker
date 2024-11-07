@@ -5,7 +5,7 @@ export const HTTP_EXCEPTIONS_MESSAGES = {
     "We could not recognize your email or password.",
   "Internal Server Error":
     "It is us! something went wrong. Please try again later.",
-  "SUCCESS PROCESS": "Successfully created!",
+  "SUCCESS PROCESS": "Successfully!",
   "SUCCESS EDIT": "Congratulation, you edited your profile successfully!",
   "SUCCESS LOGIN": "Successfully logged in.",
   "RESET PASSWORD SUCCESSFULLY": "Reset password successfully.",

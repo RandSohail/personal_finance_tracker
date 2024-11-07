@@ -1,13 +1,19 @@
-import React from "react";
-// import PropTypes from "prop-types";
+import React, { useEffect, useState } from "react";
 import { Title, Flex } from "../AntDesign";
 import RandomAvatar from "./randomAvatar";
-
+import { axiosCall } from "../../services";
 import "./style.css";
 
 export default function ProfileData(data) {
-  // TODO: make a request to the server to get this data
-  const { name, email, balance } = data.data;
+  const [balance, setBalance] = useState(0.0);
+  useEffect(() => {
+    async function getBalanceAPI() {
+      const accountData = await axiosCall("/account/balance", "get");
+      setBalance(accountData.data.data.balance);
+    }
+    getBalanceAPI();
+  }, []);
+  const { name, email } = data.data;
 
   return (
     <div>
