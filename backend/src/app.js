@@ -5,8 +5,10 @@ import morgan from "morgan";
 import cookieParser from 'cookie-parser';
 import routes from './routes/index.js'
 import { notFound, serverError } from './middleware/index.js'
+// import "./helpers/weeklyBudgetReset.js";
 const app = express();
 
+// weeklyBudget();
 app.use(cors({
   origin: 'http://localhost:3000',
   credentials: true,

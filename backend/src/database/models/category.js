@@ -12,7 +12,7 @@ const CategoryModel = (sequelize) => {
       allowNull: false
     },
   }, {
-    tableName: 'categorys',
+    tableName: 'categories',
   })
 }
 

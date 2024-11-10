@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Title, Space } from "../components/AntDesign";
-import { ProfileData, ProfileTable } from "../components";
+import { ProfileData, ProfileTable, AddBudget } from "../components";
 import { axiosCall } from "../services";
 
 export default function ProfilePage() {
@@ -29,6 +29,7 @@ export default function ProfilePage() {
           Welcome, {firstName}
         </Title>
         <ProfileData data={data} />
+        <AddBudget />
         <ProfileTable />
       </Space>
     </div>

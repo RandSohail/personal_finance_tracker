@@ -9,6 +9,7 @@ export const HTTP_EXCEPTIONS_MESSAGES = {
   "SUCCESS EDIT": "Congratulation, you edited your profile successfully!",
   "SUCCESS LOGIN": "Successfully logged in.",
   "RESET PASSWORD SUCCESSFULLY": "Reset password successfully.",
+  "Successfully Added a Budget": "The Budget was successfully added",
 };
 
 export const backendURL = "http://localhost:3001/api/v1";
