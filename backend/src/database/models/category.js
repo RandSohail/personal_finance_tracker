@@ -8,7 +8,7 @@ const CategoryModel = (sequelize) => {
       primaryKey: true,
     },
     name: {
-      type: DataTypes.CHAR,
+      type: DataTypes.STRING,
       allowNull: false
     },
   }, {
