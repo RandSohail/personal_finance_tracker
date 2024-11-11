@@ -19,7 +19,7 @@ export default async () => {
     balance: 2500.7
   }])
 
-  await Categories.bulkCreate([{ name: "Food" }, { name: "Entertainment" }, { name: "Transportation" }, { name: "Utilities" }, { name: "Health" }, { name: "Clothing" }, { name: "Rent" }, { name: "Others" }]);
+  await Categories.bulkCreate([{ name: "Food" }, { name: "Rent" }, { name: "Transportation" }, { name: "Entertainment" }, { name: "Utilities" }, { name: "Health" }, { name: "Clothing" }, { name: "Others" }]);
 
   await Budgets.bulkCreate([{ userId: 1, categoryId: 1, limit: 400, current_spending: 50 }, { userId: 1, categoryId: 3, limit: 200, current_spending: 25.75 }])
 

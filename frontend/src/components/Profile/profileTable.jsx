@@ -45,6 +45,7 @@ const columns = [
 
 export default function ProfileTable() {
   const [data, setData] = useState([]);
+  // TODO: automatically update table after add a category
   useEffect(() => {
     async function fetchCategoryBudgetsForCurrentWeek() {
       const fetchedData = await axiosCall(
@@ -59,6 +60,7 @@ export default function ProfileTable() {
     }
     fetchCategoryBudgetsForCurrentWeek();
   }, []);
+
   return (
     <>
       <Title level={4}>Budget for this Week</Title>

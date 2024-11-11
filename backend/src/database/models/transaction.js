@@ -28,10 +28,6 @@ const TransactionModel = (sequelize) => {
       values: ['income', 'expense'],
       allowNull: false,
     },
-    timestamp: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
-    },
     description: {
       type: DataTypes.TEXT,
       allowNull: true

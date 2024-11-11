@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { Modal, Button, Form, Input, Select } from "../AntDesign";
 import { axiosCall } from "../../services";
@@ -42,6 +41,7 @@ export default function AddBudget() {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
   return (
     <div>
       <Button type="primary" onClick={showModal}>
