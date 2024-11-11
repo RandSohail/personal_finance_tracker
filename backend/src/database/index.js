@@ -18,15 +18,15 @@ export const Users = UserModel(sequelize);
 export const Accounts = AccountModel(sequelize);
 export const Transactions = TransactionModel(sequelize);
 export const Budgets = BudgetModel(sequelize);
-export const Categorys = CategoryModel(sequelize);
+export const Categories = CategoryModel(sequelize);
 
 //: relations 
 Users.hasOne(Accounts);
 Users.hasMany(Budgets);
 Users.hasMany(Transactions);
 Accounts.hasMany(Transactions);
-Categorys.hasMany(Budgets);
-Categorys.hasMany(Transactions);
+Categories.hasMany(Budgets);
+Categories.hasMany(Transactions);
 
 const database = {
   sequelize,

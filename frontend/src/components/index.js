@@ -1,2 +1,2 @@
 export { SignupForm, LoginForm } from "./Authentication";
-export { ProfileData, ProfileTable } from "./Profile";
+export { ProfileData, ProfileTable, AddBudget } from "./Profile";

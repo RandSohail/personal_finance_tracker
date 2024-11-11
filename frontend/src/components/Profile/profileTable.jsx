@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Tag } from "antd";
 import { Table, Title } from "../AntDesign";
+import { axiosCall } from "../../services";
 
 const columns = [
   {
@@ -41,69 +42,28 @@ const columns = [
     ),
   },
 ];
-const data = [
-  {
-    key: "1",
-    category: "Food ",
-    limit: 100.5,
-    current_spending: 20.25,
-    tags: ["in Budget"],
-  },
-  {
-    key: "2",
-    category: "Entertainment",
-    limit: 50,
-    current_spending: 10.5,
-    tags: ["in Budget"],
-  },
-  {
-    key: "3",
-    category: "Transportation",
-    limit: 200.0,
-    current_spending: 250,
-    tags: ["out Budget"],
-  },
-  {
-    key: "4",
-    category: "Utilities",
-    limit: 20.0,
-    current_spending: 0.0,
-    tags: ["in Budget"],
-  },
-  {
-    key: "5",
-    category: "Health",
-    limit: 50.0,
-    current_spending: 0.0,
-    tags: ["in Budget"],
-  },
-  {
-    key: "6",
-    category: "Clothing",
-    limit: 300.0,
-    current_spending: 150.25,
-    tags: ["in Budget"],
-  },
-  {
-    key: "7",
-    category: "Rent",
-    limit: 1700.0,
-    current_spending: 1700.0,
-    tags: ["in Budget"],
-  },
-  {
-    key: "8",
-    category: "Others",
-    limit: 200.0,
-    current_spending: 0.0,
-    tags: ["in Budget"],
-  },
-];
 
 export default function ProfileTable() {
+  const [data, setData] = useState([]);
+  // TODO: automatically update table after add a category
+  useEffect(() => {
+    async function fetchCategoryBudgetsForCurrentWeek() {
+      const fetchedData = await axiosCall(
+        "/budget/getCategoryBudgetsForCurrentWeek",
+        "get",
+      );
+      const dataWithKeys = fetchedData.data.data.map((item, index) => ({
+        ...item,
+        key: index + 1,
+      }));
+      setData(dataWithKeys);
+    }
+    fetchCategoryBudgetsForCurrentWeek();
+  }, []);
+
   return (
     <>
-      <Title level={4}>Budget for this month</Title>
+      <Title level={4}>Budget for this Week</Title>
       <Table columns={columns} dataSource={data} />
     </>
   );
