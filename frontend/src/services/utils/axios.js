@@ -11,7 +11,9 @@ async function axiosCall(url, method, data) {
       withCredentials: true,
     });
     const msg = response.data.message;
+    console.log({ response });
     if (msg && HTTP_EXCEPTIONS_MESSAGES[msg]) {
+      console.log(1111);
       message.success(HTTP_EXCEPTIONS_MESSAGES[msg]);
     }
     return response;
@@ -21,7 +23,7 @@ async function axiosCall(url, method, data) {
         ? HTTP_EXCEPTIONS_MESSAGES[error.response.data.message]
         : "An unexpected error occurred.";
     message.error(errorMessage);
-    throw error; // re-throw for further handling
+    // throw error;
   }
 }
 

@@ -13,7 +13,10 @@
 //   http: 3,
 //   debug: 4,
 // };
-
+export const messages = {
+  userIdNotExist: "UserId is required",
+  AccountNoUserID: "Account does not exist for this userId"
+}
 export const httpStatus = {
   UNAUTHORIZED: 401,
   CREATED: 201,
