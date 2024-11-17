@@ -5,5 +5,6 @@ import { validator, transactionSchema } from "../helpers/index.js";
 const router = express.Router();
 
 router.post('/add-transaction', validator.body(transactionSchema), TransactionController.addTransaction)
+router.get('/all-transactions', TransactionController.getAllTransactions)
 
 export default router;

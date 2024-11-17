@@ -11,9 +11,7 @@ async function axiosCall(url, method, data) {
       withCredentials: true,
     });
     const msg = response.data.message;
-    console.log({ response });
     if (msg && HTTP_EXCEPTIONS_MESSAGES[msg]) {
-      console.log(1111);
       message.success(HTTP_EXCEPTIONS_MESSAGES[msg]);
     }
     return response;

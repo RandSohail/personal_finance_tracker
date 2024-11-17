@@ -1,4 +1,4 @@
-import { Accounts, Transactions } from "../database/index.js";
+import { Accounts, Transactions, Categories } from "../database/index.js";
 import { CustomError, httpStatus, messages } from "../helpers/index.js";
 
 export default class TransactionController {
@@ -34,4 +34,55 @@ export default class TransactionController {
       next(error)
     }
   }
+  static async getAllTransactions(request, response, next) {
+    try {
+      const userId = request.cookies.userId;
+
+      const data = await Categories.findAll({
+        attributes: ["name"],
+        include: [
+          {
+            model: Transactions,
+            attributes: ['id', 'amount', 'type', "description"],
+            where: {
+              userId
+            },
+          },
+        ],
+      });
+      const transformedData = data.flatMap(category => category.transactions.map(transaction => ({
+        category: category.name,
+        ...transaction.dataValues
+      })));
+
+      response.status(httpStatus.OK).json({ data: transformedData });
+    } catch (error) {
+      next(error)
+    }
+  }
+}
+
+const test = {
+  "data": [
+    {
+      "id": 1,
+      "name": "Food",
+      "createdAt": "2024-11-11T10:31:42.978Z",
+      "updatedAt": "2024-11-11T10:31:42.978Z",
+      "transactions": [
+        {
+          "id": 49,
+          "amount": "33",
+          "type": "expense",
+          "description": null
+        },
+        {
+          "id": 2,
+          "amount": "20",
+          "type": "expense",
+          "description": ""
+        }
+      ]
+    }
+  ]
 }
