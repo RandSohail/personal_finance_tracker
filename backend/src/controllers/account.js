@@ -6,7 +6,6 @@ export default class AccountController {
   static async getBalance(request, response, next) {
     try {
       const userId = request.cookies.userId;
-      console.log({ userId });
       if (!userId) throw new Error("UNAUTHORIZED");
 
       const accountData = await Accounts.findOne({ where: { userId } });

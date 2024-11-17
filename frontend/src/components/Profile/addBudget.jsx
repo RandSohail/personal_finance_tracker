@@ -1,21 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
+import { CategoriesContext } from "../../context/CategoriesContext";
 import { Modal, Button, Form, Input, Select } from "../AntDesign";
 import { axiosCall } from "../../services";
 import "./style.css";
 
 export default function AddBudget() {
   const { Option } = Select;
-
+  const { error, loading, categories } = useContext(CategoriesContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [categories, setCategories] = useState([]);
-  useEffect(() => {
-    async function fetchCategories() {
-      const data = await axiosCall("/category/all-category", "get");
-      setCategories(data.data.data);
-    }
-    fetchCategories();
-  }, []);
-
   const [form] = Form.useForm();
 
   const showModal = () => {
@@ -42,6 +34,9 @@ export default function AddBudget() {
     setIsModalOpen(false);
   };
 
+  if (loading) return <p>Loading categories...</p>;
+
+  if (error) return <p>Error loading categories: {error}</p>;
   return (
     <div>
       <Button type="primary" onClick={showModal}>

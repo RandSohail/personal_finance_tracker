@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Title, Flex } from "../AntDesign";
 import RandomAvatar from "./randomAvatar";
-import { axiosCall } from "../../services";
+import Balance from "../balance";
 import "./style.css";
 
 export default function ProfileData(data) {
-  const [balance, setBalance] = useState(0.0);
-  useEffect(() => {
-    async function getBalanceAPI() {
-      const accountData = await axiosCall("/account/balance", "get");
-      setBalance(accountData.data.data.balance);
-    }
-    getBalanceAPI();
-  }, []);
   const { name, email } = data.data;
 
   return (
@@ -34,9 +26,7 @@ export default function ProfileData(data) {
           <Title level={5} strong>
             Your total Balance is{" "}
           </Title>
-          <Title level={4} strong>
-            {balance} ILS
-          </Title>
+          <Balance />
         </div>
       </Flex>
     </div>

@@ -25,7 +25,6 @@ export default class BudgetController {
     const startOfWeek = moment().startOf("week").toDate();
     const endOfWeek = moment().endOf("week").toDate();
 
-
     try {
       const categories = await Categories.findAll({
         include: [
@@ -42,20 +41,25 @@ export default class BudgetController {
         ],
       });
 
-      const data = categories.map((category) => {
-        const limit = category.dataValues.budgets[0].dataValues.limit;
-        const current_spending = category.dataValues.budgets[0].dataValues.current_spending;
+      if (categories.length != 0) {
+        const data = categories.map((category) => {
+          const limit = category.dataValues.budgets[0].dataValues.limit;
+          const current_spending = category.dataValues.budgets[0].dataValues.current_spending;
 
-        const tag = limit >= current_spending ? 'out of Budget' : 'in Budget';
+          const tag = limit >= current_spending ? 'out of Budget' : 'in Budget';
 
-        return {
-          category: category.name,
-          limit,
-          current_spending,
-          tags: [tag],
-        };
-      });
-      response.json({ data })
+          return {
+            category: category.name,
+            limit,
+            current_spending,
+            tags: [tag],
+          };
+        });
+        response.json({ data })
+      } else {
+        response.json({ message: "No data found", data: [] })
+      }
+
     } catch (error) {
       console.error("Error fetching category budgets:", error);
       next(error);

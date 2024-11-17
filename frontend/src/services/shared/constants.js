@@ -10,6 +10,10 @@ export const HTTP_EXCEPTIONS_MESSAGES = {
   "SUCCESS LOGIN": "Successfully logged in.",
   "RESET PASSWORD SUCCESSFULLY": "Reset password successfully.",
   "Successfully Added a Budget": "The Budget was successfully added",
+  "Account does not exist for this userId": "Log in or Sign up",
+  "UserId is required": "Please log in",
+  "Successfully Added a Transaction":
+    "Transaction added and the Balance Updated Successfully",
 };
 
 export const backendURL = "http://localhost:3001/api/v1";

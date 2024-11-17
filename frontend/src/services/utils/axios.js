@@ -21,7 +21,7 @@ async function axiosCall(url, method, data) {
         ? HTTP_EXCEPTIONS_MESSAGES[error.response.data.message]
         : "An unexpected error occurred.";
     message.error(errorMessage);
-    throw error; // re-throw for further handling
+    // throw error;
   }
 }
 

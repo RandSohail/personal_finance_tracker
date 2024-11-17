@@ -11,7 +11,7 @@ const serverError = (error, _request, response, _next) => {
   console.log("SERVER ERROR ");
   response
     .status(error.status || httpStatus.INTERNAL_SERVER_ERROR)
-    .json({ message: error.status ? error.message : errorResponse.SERVER });
+    .json({ message: error.message ? error.message : errorResponse.SERVER });
 };
 
 export { notFound, serverError };

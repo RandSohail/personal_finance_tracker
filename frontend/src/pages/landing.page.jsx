@@ -16,6 +16,9 @@ export default function Landing() {
       <Button type="primary" onClick={() => navigate("/login")}>
         Login Page
       </Button>
+      <Button type="primary" onClick={() => navigate("/transaction")}>
+        Transaction Page
+      </Button>
     </div>
   );
 }

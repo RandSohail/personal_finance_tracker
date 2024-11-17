@@ -18,5 +18,13 @@ export const password = Joi.string().$.min(6).max(33)
 export const id = Joi.number()
   .required().messages({ 'number.empty': 'id cannot be empty' });
 
+export const optionalId = Joi.number().allow("");
+
 export const string = Joi.string()
   .required().messages({ 'string.empty': 'cannot be empty' });
+
+export const optionString = Joi.string().allow("");
+
+export const transactionType = Joi.string().valid("income", "expense").required().messages({ 'string.empty': 'cannot be empty' });
+
+export const number = Joi.number().required().messages({ 'number.empty': 'id cannot be empty' });
