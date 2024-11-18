@@ -1,0 +1,28 @@
+.profile-container {
+  width: 80%;
+  margin: 50px auto;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.profile-container > .ant-space{
+  /* border: 1px solid red; */
+  width: 95%;
+  margin: 0px auto !important;
+  display: flex;
+} 
+.profile-welcome {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.first-section-name-email {
+  padding-left: 30px;
+}
+
+.profile-second-section {
+  text-align: center;
+  height: fit-content;
+  background-color: rgb(226, 227, 233);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
