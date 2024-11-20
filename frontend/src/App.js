@@ -6,6 +6,9 @@ import {
   ProfilePage,
   LandingPage,
   TransactionsPage,
+  ResetPasswordPage,
+  EmailSent,
+  ResetPasswordEmailPage,
 } from "./pages";
 import "./App.css";
 
@@ -18,6 +21,12 @@ function App() {
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/profile" element={<ProfilePage />}></Route>
         <Route path="/transaction" element={<TransactionsPage />}></Route>
+        <Route path="/reset-password" element={<ResetPasswordPage />}></Route>
+        <Route
+          path="/reset-password-email"
+          element={<ResetPasswordEmailPage />}
+        ></Route>
+        <Route path="/email-sent" element={<EmailSent />}></Route>
       </Routes>
     </div>
   );

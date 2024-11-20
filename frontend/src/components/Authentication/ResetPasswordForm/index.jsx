@@ -1,36 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { axiosCall } from "../../../services/index";
 import { Input, Title, Button, Form, message } from "../../AntDesign";
 
-export default function Login() {
+//TODO: this router should be protected by checking the token -> resetPasswordToken
+export default function ResetPassword() {
   const navigate = useNavigate();
-
   const onFinish = async (values) => {
     const { password } = values;
-    const email = values.email.toLowerCase();
-    const response = await axiosCall("/auth/login", "post", {
-      email,
+    const response = await axiosCall("/auth/reset-password", "post", {
       password,
     });
 
-    if (response && response.statusText === "OK") {
-      // TODO: navigate to a correct page
-      // TODO: add the JWT
-      navigate("/");
+    if (response.statusText === "OK") {
+      message.success("Reset Password successfully");
+      setTimeout(() => navigate("/"), 1000);
     }
   };
-
   const onFinishFailed = (errorInfo) => {
-    message.error(errorInfo.message);
+    console.log("Error:", errorInfo);
   };
-
   return (
     <div className="container">
       <Title level={2} className="header">
-        Login
+        Reset Password
       </Title>
       <div className="inputs-container">
         <Form
@@ -40,19 +34,6 @@ export default function Login() {
           onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
-          {/* Email */}
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[
-              {
-                required: true,
-                message: "Please input your email!",
-              },
-            ]}
-          >
-            <Input placeholder="Enter your email" />
-          </Form.Item>
           {/* Password */}
           <Form.Item
             label="Password"
@@ -71,20 +52,44 @@ export default function Login() {
               }
             />
           </Form.Item>
-          {/* Login Button */}
+          {/* Confirm Password */}
+          <Form.Item
+            label="Confirm Password"
+            name="confirm"
+            dependencies={["password"]}
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: "Please confirm your password!",
+              },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue("password") === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(
+                    new Error(
+                      "The two passwords that you entered do not match!",
+                    ),
+                  );
+                },
+              }),
+            ]}
+            className="input-password"
+          >
+            <Input.Password placeholder="Confirm Password" />
+          </Form.Item>
+          {/* Sign up Button */}
           <Form.Item>
             <Button
               type="primary"
               block
               className="form-button"
               htmlType="submit"
-              style={{ marginBottom: "20px" }}
             >
-              Login
+              Reset Password
             </Button>
-            <Link to="/reset-password-email" style={{ color: "#747474" }}>
-              Forget Password?
-            </Link>
           </Form.Item>
         </Form>
       </div>

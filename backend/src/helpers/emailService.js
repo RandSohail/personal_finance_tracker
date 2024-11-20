@@ -1,20 +1,40 @@
-import sgMail from '@sendgrid/mail';
+import nodemailer from "nodemailer";
+import "dotenv/config";
 
-
-export default async () => {
+export default async ({ email, link }) => {
+  const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD;
+  const EMAIL_SENDER = process.env.EMAIL_SENDER;
   try {
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-    const message = {
-      to: 'randsohail98@gmail.com',
-      from: '',
-      subject: 'Sending with Twilio SendGrid is Fun',
-      text: 'and easy to do anywhere, even with Node.js',
-      html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-    };
-    await sgMail.send(message);
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      service: "gmail",
+      auth: {
+        user: EMAIL_SENDER,
+        pass: EMAIL_PASSWORD,
+      },
+    });
+
+    const mailOptions = {
+      from: 'Rand Sohail',
+      to: email,
+      subject: 'Finance Tracker - Reset your Password',
+      html: `
+    <h1>Reset your Password</h1>
+    <p>Click the link to reset your password:</p>
+    <a href="${link}" target="_blank">Reset Password</a>
+  `};
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (!error) {
+        console.log('Email sent: ' + info.response);
+        return ("Email sent Successfully");
+      } else {
+        console.log({ error });
+      }
+    });
+
   } catch (error) {
-    if (error) {
-      throw new Error(error.toString().split('\n ')[1], error.code);
-    }
+    console.log("Mail Error", { error });
   }
 };

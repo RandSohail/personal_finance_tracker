@@ -14,6 +14,7 @@
 //   debug: 4,
 // };
 export const messages = {
+  UserNotExist: "User Not Exist",
   userIdNotExist: "UserId is required",
   AccountNoUserID: "Account does not exist for this userId"
 }
