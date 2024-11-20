@@ -1,6 +1,12 @@
 import ProfilePage from "./profile.page";
 import LandingPage from "./landing.page";
 import TransactionsPage from "./transactions.page";
-export { SignUpPage, LoginPage } from "./authentication";
+import EmailSent from "./authentication/emailSent.page";
 
-export { ProfilePage, LandingPage, TransactionsPage };
+export {
+  SignUpPage,
+  LoginPage,
+  ResetPasswordPage,
+  ResetPasswordEmailPage,
+} from "./authentication";
+export { ProfilePage, LandingPage, TransactionsPage, EmailSent };
