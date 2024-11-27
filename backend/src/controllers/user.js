@@ -1,5 +1,5 @@
 import { Users } from "../database/index.js";
-import { httpStatus } from "../helpers/constants.js";
+import { httpStatus, CustomError, messages } from "../helpers/index.js";
 
 
 export default class UserController {
@@ -10,7 +10,7 @@ export default class UserController {
       if (!userId) throw new Error("UNAUTHORIZED");
 
       const userData = await Users.findOne({ where: { id: userId } });
-      if (!userData) throw new Error("Database Error");
+      if (!userData) throw new CustomError(messages.UNAUTHORIZED, httpStatus.UNAUTHORIZED);
 
       response.status(httpStatus.OK).json({
         data: {

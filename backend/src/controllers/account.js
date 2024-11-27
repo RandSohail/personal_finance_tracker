@@ -1,20 +1,19 @@
 import { Accounts } from "../database/index.js";
-import { httpStatus } from "../helpers/constants.js";
+import { httpStatus, CustomError, messages } from "../helpers/index.js";
 
 
 export default class AccountController {
-  static async getBalance(request, response, next) {
+  static async Balance(request, response, next) {
     try {
-      const userId = request.cookies.userId;
-      if (!userId) throw new Error("UNAUTHORIZED");
+      const { userId } = request.cookies;
+      if (!userId) throw new CustomError(messages.userIdNotExist, httpStatus.UNAUTHORIZED);
 
       const accountData = await Accounts.findOne({ where: { userId } });
-      if (!accountData) throw new Error("Database Error");
+      if (!accountData) throw new CustomError(messages.DataBase, httpStatus.INTERNAL_SERVER_ERROR);
 
       response.status(httpStatus.OK).json({ data: accountData.dataValues });
 
     } catch (error) {
-      console.log(error);
       next(error)
     }
   }

@@ -49,7 +49,7 @@ export default function ProfileTable() {
   useEffect(() => {
     async function fetchCategoryBudgetsForCurrentWeek() {
       const fetchedData = await axiosCall(
-        "/budget/getCategoryBudgetsForCurrentWeek",
+        "/budget/budgets-for-current-week",
         "get",
       );
       const dataWithKeys = fetchedData.data.data.map((item, index) => ({

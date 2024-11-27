@@ -5,6 +5,6 @@ import { validator, budgetSchema } from '../helpers/index.js';
 const router = express.Router();
 
 router.post('/add-budget', validator.body(budgetSchema), BudgetController.createBudget);
-router.get('/getCategoryBudgetsForCurrentWeek', BudgetController.getCategoryBudgetsForCurrentWeek);
+router.get('/budgets-for-current-week', BudgetController.BudgetsForCurrentWeek);
 
 export default router;

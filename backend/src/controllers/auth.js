@@ -1,7 +1,6 @@
 import { hash, compare } from "bcrypt";
 import { Users, Accounts } from "../database/index.js";
 import { SendEmail, CustomError, messages, httpStatus, signToken, verifyToken } from "../helpers/index.js"
-import { where } from "sequelize";
 export default class AuthController {
   static async signUp(request, response, next) {
     try {
@@ -9,7 +8,6 @@ export default class AuthController {
 
       const hashedPassword = await hash(password, 10);
 
-      // TODO: check email if its already exist and handle the error
       const userData = await Users.create({ name, email, password: hashedPassword });
       await Accounts.create({ userId: userData.dataValues.id })
       response.send({ message: "SUCCESS SIGNUP" });
@@ -25,13 +23,12 @@ export default class AuthController {
       const { email, password } = request.body;
 
       const data = await Users.findOne({ where: { email } });
-      if (!data) throw new Error('Incorrect email or password');
+      if (!data) throw new CustomError(messages.UNAUTHORIZED, httpStatus.UNAUTHORIZED);
 
       const resultCompare = await compare(password, data.password)
-      if (!resultCompare) throw new Error('Incorrect email or password');
+      if (!resultCompare) throw new CustomError(messages.UNAUTHORIZED, httpStatus.UNAUTHORIZED);
 
-      response.cookie('userId', data.dataValues.id, { httpOnly: true, secure: true });
-      response.json({ message: "SUCCESS LOGIN" });
+      response.cookie('userId', data.dataValues.id, { httpOnly: true, secure: true }).json({ message: "SUCCESS LOGIN" });
     } catch (error) {
       if (error.message) response.status(httpStatus.FORBIDDEN).json({ message: error.message })
       else next(error)

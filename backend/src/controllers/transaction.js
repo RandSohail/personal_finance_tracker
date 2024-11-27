@@ -34,9 +34,9 @@ export default class TransactionController {
       next(error)
     }
   }
-  static async getAllTransactions(request, response, next) {
+  static async allTransactions(request, response, next) {
     try {
-      const userId = request.cookies.userId;
+      const { userId } = request.cookies;
 
       const data = await Categories.findAll({
         attributes: ["name"],
@@ -57,32 +57,8 @@ export default class TransactionController {
 
       response.status(httpStatus.OK).json({ data: transformedData });
     } catch (error) {
+      console.log({ error });
       next(error)
     }
   }
-}
-
-const test = {
-  "data": [
-    {
-      "id": 1,
-      "name": "Food",
-      "createdAt": "2024-11-11T10:31:42.978Z",
-      "updatedAt": "2024-11-11T10:31:42.978Z",
-      "transactions": [
-        {
-          "id": 49,
-          "amount": "33",
-          "type": "expense",
-          "description": null
-        },
-        {
-          "id": 2,
-          "amount": "20",
-          "type": "expense",
-          "description": ""
-        }
-      ]
-    }
-  ]
 }

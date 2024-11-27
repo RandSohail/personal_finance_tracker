@@ -1,27 +1,26 @@
 import { Op } from 'sequelize';
-import { Budgets, Categories } from "../database/index.js";
-import { httpStatus } from "../helpers/constants.js";
 import moment from "moment";
+import { Budgets, Categories } from "../database/index.js";
+import { httpStatus, CustomError, messages } from "../helpers/index.js";
 export default class BudgetController {
   static async createBudget(request, response, next) {
     try {
       const { categoryId, limit, current_spending } = request.body;
 
       const userId = +request.cookies.userId;
-      if (!userId) throw new Error("UnAuthorized");
+      if (!userId) throw new CustomError(messages.UNAUTHORIZED, httpStatus.UNAUTHORIZED);
 
       await Budgets.create({ userId, categoryId: +categoryId, limit, current_spending: +current_spending })
 
       response.status(httpStatus.OK).json({ message: "Successfully Added a Budget" });
     } catch (error) {
-      console.log({ test: error.errors[0].message });
       if (error.name === "SequelizeUniqueConstraintError")
         response.status(httpStatus.BAD_REQUEST).json({ message: error.errors[0].message });
       else next(error);
     }
   }
-  static async getCategoryBudgetsForCurrentWeek(request, response, next) {
-    const userId = request.cookies.userId;
+  static async BudgetsForCurrentWeek(request, response, next) {
+    const { userId } = request.cookies;
     const startOfWeek = moment().startOf("week").toDate();
     const endOfWeek = moment().endOf("week").toDate();
 
@@ -46,7 +45,7 @@ export default class BudgetController {
           const limit = category.dataValues.budgets[0].dataValues.limit;
           const current_spending = category.dataValues.budgets[0].dataValues.current_spending;
 
-          const tag = limit >= current_spending ? 'out of Budget' : 'in Budget';
+          const tag = limit <= current_spending ? 'out of Budget' : 'in Budget';
 
           return {
             category: category.name,
@@ -61,7 +60,6 @@ export default class BudgetController {
       }
 
     } catch (error) {
-      console.error("Error fetching category budgets:", error);
       next(error);
     }
   }
