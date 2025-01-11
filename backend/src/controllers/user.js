@@ -6,7 +6,7 @@ export default class UserController {
 
   static async userData(request, response, next) {
     try {
-      const userId = request.cookies.userId;
+      const userId = request.cookies.authToken;
       if (!userId) throw new Error("UNAUTHORIZED");
 
       const userData = await Users.findOne({ where: { id: userId } });

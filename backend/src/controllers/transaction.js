@@ -36,7 +36,7 @@ export default class TransactionController {
   }
   static async allTransactions(request, response, next) {
     try {
-      const { userId } = request.cookies;
+      const userId = request.cookies.authToken;
 
       const data = await Categories.findAll({
         attributes: ["name"],

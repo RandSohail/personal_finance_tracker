@@ -28,7 +28,7 @@ export default class AuthController {
       const resultCompare = await compare(password, data.password)
       if (!resultCompare) throw new CustomError(messages.UNAUTHORIZED, httpStatus.UNAUTHORIZED);
 
-      response.cookie('userId', data.dataValues.id, { httpOnly: true, secure: true }).json({ message: "SUCCESS LOGIN" });
+      response.cookie('authToken', data.dataValues.id, { secure: true }).json({ message: "SUCCESS LOGIN" });
     } catch (error) {
       if (error.message) response.status(httpStatus.FORBIDDEN).json({ message: error.message })
       else next(error)
@@ -96,6 +96,6 @@ export default class AuthController {
   }
 
   static logout(_request, response, _next) {
-    response.status(httpStatus.OK).clearCookie("userId").json({ message: "LogOut Successfully" })
+    response.status(httpStatus.OK).clearCookie("auth").json({ message: "LogOut Successfully" })
   }
 }

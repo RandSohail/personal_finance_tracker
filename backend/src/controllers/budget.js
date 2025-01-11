@@ -20,7 +20,7 @@ export default class BudgetController {
     }
   }
   static async BudgetsForCurrentWeek(request, response, next) {
-    const { userId } = request.cookies;
+    const userId = request.cookies.authToken;
     const startOfWeek = moment().startOf("week").toDate();
     const endOfWeek = moment().endOf("week").toDate();
 

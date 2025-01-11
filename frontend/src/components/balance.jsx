@@ -10,6 +10,7 @@ export default function getBalance() {
   }
   useEffect(() => {
     getBalanceAPI();
+    console.log(balance);
   }, []);
 
   return (
