@@ -17,9 +17,7 @@ export default function Login() {
     });
 
     if (response && response.statusText === "OK") {
-      // TODO: navigate to a correct page
-      // TODO: add the JWT
-      navigate("/");
+      navigate("/profile");
     }
   };
 
