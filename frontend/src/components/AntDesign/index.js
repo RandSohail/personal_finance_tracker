@@ -12,3 +12,4 @@ export { default as Select } from "./Select";
 export { default as Card } from "./Card";
 export { default as Menu } from "./Menu";
 export { default as Statistic } from "./Statistic";
+export { default as Divider } from "./Divider";

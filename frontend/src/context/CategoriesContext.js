@@ -11,8 +11,9 @@ export const CategoriesProvider = ({ children }) => {
 
   const fetchCategories = async () => {
     try {
-      const data = await axiosCall("/category/all-category", "get"); // Replace with your API endpoint
+      const data = await axiosCall("/category/all-category", "get");
       setCategories(data.data.data);
+      console.log({ categories });
       setLoading(false);
     } catch (err) {
       setError(err.message);

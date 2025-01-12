@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, Text } from "../AntDesign";
-import { getCookie } from "../../services";
-import "./style.css";
+import { Menu, Text } from "./AntDesign";
+import { getCookie } from "../services";
+import "./Landing/style.css";
 
 export default function NavBar() {
   const token = getCookie("authToken");
@@ -15,7 +15,7 @@ export default function NavBar() {
       <Menu className="nav-bar">
         {token ? (
           <>
-            <NavLink to="/profile">Profile</NavLink>
+            <NavLink to="/profile">Profile</NavLink> |
             <NavLink to="/transaction">Transaction</NavLink>
           </>
         ) : (

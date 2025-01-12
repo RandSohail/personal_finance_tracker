@@ -1,11 +1,9 @@
 .hero-container{
-  /* border: 1px solid blue; */
   width: 80%;
   margin: 0px auto;
   padding: 70px 0px;
   background-color: #ebebeb;
   border-radius: 10px;
-
 }
 
 .hero-text{
@@ -28,12 +26,14 @@
 }
 .navbar-container{
   position: sticky;
+  top: 0;
   padding: 20px 100px;
   display: flex;
-  background-color: #f3f3f3;
   align-items: center;
   justify-content: space-between;
+  background-color: #f3f3f3;
   box-shadow: rgba(138, 138, 138, 0.2) 0px 2px 8px 0px;
+  z-index: 9999;
 }
 .nav-bar{
   display: flex;
@@ -59,4 +59,11 @@
   display: flex;
   flex-direction: column;
     align-items: center;
+}
+.footer{
+  background-color: #f8f9fa;
+  color: #343a40;
+  padding: 20px 10px;
+  text-align: center;
+  margin-top: 40px;
 }
