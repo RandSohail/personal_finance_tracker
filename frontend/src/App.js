@@ -19,16 +19,16 @@ function App() {
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/signup" element={<SignUpPage />}></Route>
-        <Route element={<PrivateRoutes />}>
-          <Route path="/profile" element={<ProfilePage />}></Route>
-          <Route path="/transaction" element={<TransactionsPage />}></Route>
-        </Route>
         <Route path="/reset-password" element={<ResetPasswordPage />}></Route>
         <Route
           path="/reset-password-email"
           element={<ResetPasswordEmailPage />}
         ></Route>
         <Route path="/email-sent" element={<EmailSent />}></Route>
+        <Route element={<PrivateRoutes />}>
+          <Route path="/profile" element={<ProfilePage />}></Route>
+          <Route path="/transaction" element={<TransactionsPage />}></Route>
+        </Route>
       </Routes>
     </div>
   );

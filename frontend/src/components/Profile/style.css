@@ -1,6 +1,7 @@
 .profile-container {
   width: 80%;
   margin: 50px auto;
+  background-color: #ebebeb;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .profile-container > .ant-space{
