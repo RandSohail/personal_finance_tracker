@@ -16,4 +16,4 @@ export const HTTP_EXCEPTIONS_MESSAGES = {
     "Transaction added and the Balance Updated Successfully",
 };
 
-export const backendURL = "http://localhost:3001/api/v1";
+export const backendURL = "https://finance-tracker-hk9o.onrender.com/api/v1";
