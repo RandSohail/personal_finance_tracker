@@ -1,16 +1,34 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Landing from "./pages/landing.jsx";
-import { SignUpPage, LoginPage } from "./pages";
-import "./App.css";
+import PrivateRoutes from "./components/routes/PrivateRoutes";
+import {
+  SignUpPage,
+  LoginPage,
+  ProfilePage,
+  LandingPage,
+  TransactionsPage,
+  ResetPasswordPage,
+  EmailSent,
+  ResetPasswordEmailPage,
+} from "./pages";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Routes>
-        <Route path="/" element={<Landing />}></Route>
-        <Route path="/signup" element={<SignUpPage />}></Route>
+        <Route path="/" element={<LandingPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
+        <Route path="/signup" element={<SignUpPage />}></Route>
+        <Route path="/reset-password" element={<ResetPasswordPage />}></Route>
+        <Route
+          path="/reset-password-email"
+          element={<ResetPasswordEmailPage />}
+        ></Route>
+        <Route path="/email-sent" element={<EmailSent />}></Route>
+        <Route element={<PrivateRoutes />}>
+          <Route path="/profile" element={<ProfilePage />}></Route>
+          <Route path="/transaction" element={<TransactionsPage />}></Route>
+        </Route>
       </Routes>
     </div>
   );

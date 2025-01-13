@@ -9,6 +9,15 @@
 
 .form-image{
   width: 50%;  
-  /* border: 1px solid red; */
   padding: auto 0px;
+}
+
+.email-sent-page-container{
+  text-align: center;
+  width: 50%;
+  margin: 40px auto;
+}
+.email-sent-image{
+  margin: 30px;
+  width: 60% !important;
 }

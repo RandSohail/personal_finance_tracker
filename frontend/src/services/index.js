@@ -1,3 +1,4 @@
 import axiosCall from "./utils/axios";
+import getCookie from "./utils/getCookie";
 
-export { axiosCall };
+export { axiosCall, getCookie };

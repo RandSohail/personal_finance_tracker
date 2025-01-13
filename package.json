@@ -1,14 +1,14 @@
 {
   "name": "personal_finance_tracker",
   "version": "1.0.0",
-  "description": "This system will help users track their income, expenses, set budgets, and monitor their financial health over time. The project will allow you to apply OOP, OOD, and SOLID principles at every step.",
+  "description": "This system will help users track their income, expenses, set budgets, and monitor their financial health over time.",
   "main": "index.js",
   "scripts": {
     "client": "cd frontend && npm start",
     "server": "cd backend && npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Rand Sohail",
   "license": "ISC",
   "devDependencies": {
     "@types/cors": "^2.8.17",

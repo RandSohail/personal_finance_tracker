@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { axiosCall } from "../../../services/index";
@@ -6,6 +7,7 @@ import { Input, Title, Button, Form, message } from "../../AntDesign";
 
 export default function Login() {
   const navigate = useNavigate();
+
   const onFinish = async (values) => {
     const { password } = values;
     const email = values.email.toLowerCase();
@@ -15,14 +17,14 @@ export default function Login() {
     });
 
     if (response && response.statusText === "OK") {
-      // TODO: navigate to a correct page
-      // TODO: add the JWT
-      navigate("/");
+      navigate("/profile");
     }
   };
+
   const onFinishFailed = (errorInfo) => {
     message.error(errorInfo.message);
   };
+
   return (
     <div className="container">
       <Title level={2} className="header">
@@ -74,9 +76,13 @@ export default function Login() {
               block
               className="form-button"
               htmlType="submit"
+              style={{ marginBottom: "20px" }}
             >
               Login
             </Button>
+            <Link to="/reset-password-email" style={{ color: "#747474" }}>
+              Forget Password?
+            </Link>
           </Form.Item>
         </Form>
       </div>

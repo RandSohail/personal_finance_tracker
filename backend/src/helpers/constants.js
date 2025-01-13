@@ -13,7 +13,13 @@
 //   http: 3,
 //   debug: 4,
 // };
-
+export const messages = {
+  DataBase: "Data Base Error",
+  UserNotExist: "User Not Exist",
+  userIdNotExist: "UserId is required",
+  AccountNoUserID: "Account does not exist for this userId",
+  UNAUTHORIZED: "Incorrect email or password"
+}
 export const httpStatus = {
   UNAUTHORIZED: 401,
   CREATED: 201,
