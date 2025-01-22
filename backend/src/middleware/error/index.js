@@ -6,6 +6,7 @@ const notFound = (_request, response) => {
 
 const serverError = (error, _request, response, _next) => {
   console.log("SERVER ERROR");
+  console.log({ error });
   if (error.name === "JsonWebTokenError")
     response.status(httpStatus.UNAUTHORIZED).json({ message: error.message });
   else

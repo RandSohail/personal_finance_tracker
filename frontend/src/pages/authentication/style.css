@@ -1,23 +1,22 @@
-.page-container{
-  border: 1px solid black;
+.page-container {
   display: flex;
-  justify-content: space-evenly;
-  flex-direction: row-reverse;
-  height: 100vh;
+}
+
+.form-image {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-.form-image{
-  width: 50%;  
-  padding: auto 0px;
-}
-
-.email-sent-page-container{
+.email-sent-page-container {
   text-align: center;
   width: 50%;
   margin: 40px auto;
 }
-.email-sent-image{
+
+.email-sent-image {
   margin: 30px;
   width: 60% !important;
 }

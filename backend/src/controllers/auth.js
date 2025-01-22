@@ -5,12 +5,12 @@ export default class AuthController {
   static async signUp(request, response, next) {
     try {
       const { name, email, password } = request.body;
-
       const hashedPassword = await hash(password, 10);
 
       const userData = await Users.create({ name, email, password: hashedPassword });
-      await Accounts.create({ userId: userData.dataValues.id })
-      response.send({ message: "SUCCESS SIGNUP" });
+      console.log({ userData });
+      await Accounts.create({ userId: userData.dataValues.id });
+      response.cookie('authToken', userData.dataValues.id, { secure: true }).json({ message: "SUCCESS SIGNUP" });
     } catch (error) {
       if (error.name === "SequelizeUniqueConstraintError")
         response.status(httpStatus.BAD_REQUEST).json({ message: error.errors[0].message });
@@ -23,15 +23,14 @@ export default class AuthController {
       const { email, password } = request.body;
 
       const data = await Users.findOne({ where: { email } });
-      if (!data) throw new CustomError(messages.UNAUTHORIZED, httpStatus.UNAUTHORIZED);
+      if (!data) throw new CustomError(messages.UserNotExist, httpStatus.NOT_FOUND);
 
-      const resultCompare = await compare(password, data.password)
+      const resultCompare = await compare(password, data.password);
       if (!resultCompare) throw new CustomError(messages.UNAUTHORIZED, httpStatus.UNAUTHORIZED);
 
       response.cookie('authToken', data.dataValues.id, { secure: true }).json({ message: "SUCCESS LOGIN" });
     } catch (error) {
-      if (error.message) response.status(httpStatus.FORBIDDEN).json({ message: error.message })
-      else next(error)
+      next(error)
     }
   }
 

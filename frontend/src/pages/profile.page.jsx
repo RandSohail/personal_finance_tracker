@@ -9,14 +9,14 @@ export default function ProfilePage() {
     email: "",
   });
 
+  async function fetchProfileData() {
+    const axiosData = await axiosCall("/user/user_data", "get");
+    setData({
+      name: axiosData.data.data.name,
+      email: axiosData.data.data.email,
+    });
+  }
   useEffect(() => {
-    async function fetchProfileData() {
-      const axiosData = await axiosCall("/user/user_data", "get");
-      setData({
-        name: axiosData.data.data.name,
-        email: axiosData.data.data.email,
-      });
-    }
     fetchProfileData();
   }, []);
 

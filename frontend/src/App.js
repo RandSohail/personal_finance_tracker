@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import PrivateRoutes from "./components/routes/PrivateRoutes";
 import {
   SignUpPage,
@@ -9,29 +9,58 @@ import {
   TransactionsPage,
   ResetPasswordPage,
   EmailSent,
-  ResetPasswordEmailPage,
+  ForgetPasswordPage,
 } from "./pages";
 
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <LandingPage />,
+    },
+    {
+      path: "/login",
+      element: <LoginPage />,
+    },
+    {
+      path: "/signup",
+      element: <SignUpPage />,
+    },
+    {
+      path: "/reset-password",
+      element: <ResetPasswordPage />,
+    },
+    {
+      path: "/forget-password",
+      element: <ForgetPasswordPage />,
+    },
+    {
+      path: "/email-sent",
+      element: <EmailSent />,
+    },
+    {
+      element: <PrivateRoutes />,
+      children: [
+        {
+          path: "/profile",
+          element: <ProfilePage />,
+        },
+        {
+          path: "/transaction",
+          element: <TransactionsPage />,
+        },
+      ],
+    },
+  ],
+  {
+    future: {
+      v7_startTransition: true, // Enable the future flag here
+    },
+  },
+);
+
 function App() {
-  return (
-    <div>
-      <Routes>
-        <Route path="/" element={<LandingPage />}></Route>
-        <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/signup" element={<SignUpPage />}></Route>
-        <Route path="/reset-password" element={<ResetPasswordPage />}></Route>
-        <Route
-          path="/reset-password-email"
-          element={<ResetPasswordEmailPage />}
-        ></Route>
-        <Route path="/email-sent" element={<EmailSent />}></Route>
-        <Route element={<PrivateRoutes />}>
-          <Route path="/profile" element={<ProfilePage />}></Route>
-          <Route path="/transaction" element={<TransactionsPage />}></Route>
-        </Route>
-      </Routes>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

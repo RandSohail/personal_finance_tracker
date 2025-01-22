@@ -8,8 +8,10 @@ export default class SignUp extends React.Component {
   render() {
     return (
       <div className="page-container">
-        <Image src={signupImage} className="form-image" preview={false} />
         <SignupForm />
+        <div className="form-image">
+          <Image src={signupImage} preview={false} width={"70%"} />
+        </div>
       </div>
     );
   }

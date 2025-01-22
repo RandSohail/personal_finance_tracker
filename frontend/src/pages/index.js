@@ -7,6 +7,6 @@ export {
   SignUpPage,
   LoginPage,
   ResetPasswordPage,
-  ResetPasswordEmailPage,
+  ForgetPasswordPage,
 } from "./authentication";
 export { ProfilePage, LandingPage, TransactionsPage, EmailSent };

@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import React, { createContext, useState, useEffect } from "react";
 import { axiosCall } from "../services";
+import PropTypes from "prop-types";
 
 export const CategoriesContext = createContext();
 
@@ -13,10 +13,9 @@ export const CategoriesProvider = ({ children }) => {
     try {
       const data = await axiosCall("/category/all-category", "get");
       setCategories(data.data.data);
-      console.log({ categories });
-      setLoading(false);
     } catch (err) {
       setError(err.message);
+    } finally {
       setLoading(false);
     }
   };
@@ -30,4 +29,8 @@ export const CategoriesProvider = ({ children }) => {
       {children}
     </CategoriesContext.Provider>
   );
+};
+
+CategoriesProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

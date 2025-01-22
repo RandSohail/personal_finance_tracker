@@ -14,6 +14,8 @@ export const HTTP_EXCEPTIONS_MESSAGES = {
   "UserId is required": "Please log in",
   "Successfully Added a Transaction":
     "Transaction added and the Balance Updated Successfully",
+  "User Not Exist": "User Not Exist",
 };
 
-export const backendURL = "https://finance-tracker-hk9o.onrender.com/api/v1";
+export const backendURL = "http://localhost:3001/api/v1";
+// export const backendURL = "https://finance-tracker-hk9o.onrender.com/api/v1";

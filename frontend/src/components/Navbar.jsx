@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, Text } from "./AntDesign";
+import { Menu } from "./AntDesign";
 import { getCookie } from "../services";
 import "./Landing/style.css";
 
@@ -9,9 +9,17 @@ export default function NavBar() {
 
   return (
     <nav className="navbar-container">
-      <Text style={{ fontWeight: "bold", fontSize: "19px" }}>
+      <NavLink
+        to={"/"}
+        style={{
+          fontWeight: "bold",
+          fontSize: "19px",
+          color: "#000e3d",
+          textDecoration: "none",
+        }}
+      >
         Finance Tracker
-      </Text>
+      </NavLink>
       <Menu className="nav-bar">
         {token ? (
           <>

@@ -1,0 +1,23 @@
+.container {
+  box-sizing: border-box;
+  padding: 50px 0px 0px 50px;
+  width: 50%;
+  height: 100%;
+}
+
+.header {
+  text-align: center;
+}
+
+.inputs-container {
+  width: 65%;
+  margin: 0px auto;
+
+  .ant-form-item {
+    margin-bottom: 15px;
+  }
+}
+
+.form-button {
+  margin-top: 20px;
+}
