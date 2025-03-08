@@ -1,6 +1,5 @@
 import React from "react";
 import { Image } from "../../components/AntDesign";
-import loginImage from "../../assets/login.svg";
 import { LoginForm } from "../../components";
 import "./style.css";
 
@@ -10,7 +9,11 @@ export default class Login extends React.Component {
       <div className="page-container">
         <LoginForm />
         <div className="form-image">
-          <Image src={loginImage} preview={false} style={{ width: "150%" }} />
+          <Image
+            src="/assets/login.svg"
+            preview={false}
+            style={{ width: "150%" }}
+          />
         </div>
       </div>
     );

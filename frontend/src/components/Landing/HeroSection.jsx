@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Image, Flex, Title, Text, Button, Space } from "../AntDesign";
-import Landing from "../../assets/landing.svg";
 import "./style.css";
 
 export default function Hero() {
@@ -18,7 +17,7 @@ export default function Hero() {
         </Button>
       </Space>
       <Space className="hero-image">
-        <Image src={Landing} preview={false} />
+        <Image src="/assets/landing.svg" preview={false} />
       </Space>
     </Flex>
   );

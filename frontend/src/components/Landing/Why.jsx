@@ -1,31 +1,27 @@
 import React from "react";
 import { Title, Card, Text } from "../AntDesign";
 import "./style.css";
-import Tracking from "../../assets/tracking.png";
-import PieChart from "../../assets/pie-chart.png";
-import Account from "../../assets/account.png";
-import Insight from "../../assets/insight.png";
 
 const data = [
   {
     title: "Expense Tracking",
     description: "Track all your transactions in one place.",
-    icon: Tracking,
+    icon: "/assets/tracking.png",
   },
   {
     title: "Budget Management",
     description: "Set spending limits for each category.",
-    icon: PieChart,
+    icon: "/assets/pie-chart.png",
   },
   {
     title: "Insights & Reports",
     description: "Understand your spending patterns with detailed charts.",
-    icon: Insight,
+    icon: "/assets/insight.png",
   },
   {
     title: "Secure Accounts",
     description: "Your data is encrypted and safe.",
-    icon: Account,
+    icon: "/assets/account.png",
   },
 ];
 
